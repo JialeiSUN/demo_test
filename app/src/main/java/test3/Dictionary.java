@@ -1,22 +1,72 @@
 package test3;
 
 import java.util.HashMap;
-
+import java.util.List;
 public class Dictionary {
     private String nameD;
-    private HashMap<String,String> traduction;
+    private HashMap<String,List<String>> traduction;
     public Dictionary(String name){
         nameD = name;
-        traduction = new HashMap<String,String>();
+        traduction = new HashMap<String,List<String>>();
     }
     public String getName(){
         return nameD;
     }
     
-    public String gettraduction(String name){
+    public List<String> gettraduction(String name){
         return traduction.get(name);
     }
-    public void addtraduction(String fr, String en){
-        this.traduction.put(fr,en);
+    public void addtraduction_key(String fr,List<String> en){
+        int count = 0;
+        for(String key : this.traduction.keySet()){
+            if(key == fr){
+                count = 1;
+            }
+        }
+        if(count == 0){
+            this.traduction.put(fr,en);
+        }
+        else{
+            System.out.println("Mot exsite");
+        }
+        
     }
+    public void addNewTraduction(String fr, String en){
+        int count = 0;
+        int count_tradu = 0;
+        for(String key : this.traduction.keySet()){
+            if(key != fr){
+                count = 1;
+            }
+        }
+        if(count == 0){
+            for(String i: this.gettraduction(fr)){
+                if(i == en){
+                    count_tradu = 1;
+                }
+        }
+        if(count_tradu == 0){
+            this.gettraduction(fr).add(en);
+        }
+        else{
+            System.out.println("Mot exsite");
+        }
+        
+    }
+
+}
+    public String getInverse(String name){
+        for(String key : this.traduction.keySet()){
+            for(String i: this.gettraduction(key)){
+                if(i == name){
+                    return key;
+                }
+                else{
+                    return null;
+                }
+            }
+        }
+        return null;
+    }
+
 }

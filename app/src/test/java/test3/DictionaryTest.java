@@ -12,7 +12,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.MatcherAssert.*;
 import static org.hamcrest.Matchers.equalTo;
 import java.util.ArrayList;
-
+import java.util.List;
 public class DictionaryTest {
 //Il faut competer
     private Dictionary dict;
@@ -20,8 +20,11 @@ public class DictionaryTest {
     @Before
     public void initialize(){
         dict = new Dictionary("Example");
-        dict.addtraduction("chat", "cat");
-        dict.addtraduction("chien", "dog");
+        List<String> tradu_chat = new ArrayList<>();
+        tradu_chat.add("cat");
+        tradu_chat.add("cat1");
+        tradu_chat.add("cat2");
+        dict.addtraduction_key("chat", tradu_chat);
 
     }
     
@@ -33,6 +36,13 @@ public class DictionaryTest {
         assertThat(dict.getName(),equalTo("Example"));
     }
    @Test public void testTraduction(){
-        assertThat(dict.gettraduction("chat"),equalTo("cat"));
+    List<String> tradu_chat = new ArrayList<>();
+    tradu_chat.add("cat");
+    tradu_chat.add("cat1");
+    tradu_chat.add("cat2");
+        assertThat(dict.gettraduction("chat"),equalTo(tradu_chat));
+    }
+    @Test public void testInverse(){
+        assertThat(dict.getInverse("cat1"),equalTo("chat"));
     }
 }
