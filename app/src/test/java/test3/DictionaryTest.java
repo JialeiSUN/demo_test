@@ -9,6 +9,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.MatcherAssert.*;
+import static org.hamcrest.Matchers.equalTo;
 import java.util.ArrayList;
 
 public class DictionaryTest {
@@ -19,6 +20,7 @@ public class DictionaryTest {
         dict = new Dictionary("Example");
     }
     @Test public void testDictionaryName(){
+        System.out.println(dict.getName());
         assertThat(dict.getName(),equalTo("Example"));
     }
 }
