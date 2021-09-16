@@ -5,7 +5,7 @@ import java.util.List;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-public class Dictionary {
+public class Dictionary implements IDictionary{
     private String nameD;
     private HashMap<String,List<String>> traduction;
     public Dictionary(String name){
