@@ -13,7 +13,7 @@ public class Dictionary {
         return nameD;
     }
     
-    public List<String> gettraduction(String name){
+    public List<String> getMultipleTranslations(String name){
         return traduction.get(name);
     }
     public void addtraduction_key(String fr,List<String> en){
@@ -40,13 +40,13 @@ public class Dictionary {
             }
         }
         if(count == 0){
-            for(String i: this.gettraduction(fr)){
+            for(String i: this.getMultipleTranslations(fr)){
                 if(i == en){
                     count_tradu = 1;
                 }
         }
         if(count_tradu == 0){
-            this.gettraduction(fr).add(en);
+            this.getMultipleTranslations(fr).add(en);
         }
         else{
             System.out.println("Mot exsite");
@@ -58,7 +58,7 @@ public class Dictionary {
     public String getInverse(String name){
         String ret = null;
         for(String key : this.traduction.keySet()){
-            for(String i: this.gettraduction(key)){
+            for(String i: this.getMultipleTranslations(key)){
                 if(i == name){
                     ret = key;
                 }

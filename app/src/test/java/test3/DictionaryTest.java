@@ -24,12 +24,13 @@ public class DictionaryTest {
         tradu_chat.add("cat");
         tradu_chat.add("cat1");
         tradu_chat.add("cat2");
+        
         dict.addtraduction_key("chat", tradu_chat);
 
     }
     
     @Test public void Isempty(){
-        assertNotNull("Pas de traduction",dict.gettraduction("chat"));
+        assertNotNull("Pas de traduction",dict.getMultipleTranslations("chat"));
     }
     @Test public void testDictionaryName(){
         System.out.println(dict.getName());
@@ -40,7 +41,7 @@ public class DictionaryTest {
     tradu_chat.add("cat");
     tradu_chat.add("cat1");
     tradu_chat.add("cat2");
-        assertThat(dict.gettraduction("chat"),equalTo(tradu_chat));
+        assertThat(dict.getMultipleTranslations("chat"),equalTo(tradu_chat));
     }
     @Test public void testInverse(){
         assertThat(dict.getInverse("cat1"),equalTo("chat"));
