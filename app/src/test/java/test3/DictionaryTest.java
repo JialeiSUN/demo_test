@@ -14,7 +14,12 @@ import static org.hamcrest.MatcherAssert.*;
 import static org.hamcrest.Matchers.equalTo;
 import java.util.ArrayList;
 import java.util.List;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.FileNotFoundException;
+import java.io.Reader;
+import java.io.FileReader;
 import java.io.IOException;
 public class DictionaryTest {
 //Il faut competer
@@ -59,7 +64,27 @@ public class DictionaryTest {
         }catch(IOException e){
             System.out.println(e);
         }
-        assertNotNull("Pas de traduction",file.exists());
+        assertNotNull("file not existe",file.exists());
+
+    }
+    @Test public void testRead()throws IOException{
+            FileWriter fw = new FileWriter("test2.txt");
+            BufferedWriter bufw = new BufferedWriter(fw);
+            Reader rea = new FileReader("test.txt");
+  
+            IlineReader in = new LineReader(rea);
+        String line = null;
+        try{
+            while((line = in.readLine())!=null){
+                bufw.write(line);
+                bufw.newLine();
+                assertNotNull("line not exsite",line);
+            }
+        }catch(IOException e){
+            System.out.println(e);
+        }
+        bufw.flush();
+        bufw.close();
 
     }
 }
