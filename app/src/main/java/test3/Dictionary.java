@@ -1,7 +1,10 @@
 package test3;
-
+import java.io.BufferedReader;
 import java.util.HashMap;
 import java.util.List;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 public class Dictionary {
     private String nameD;
     private HashMap<String,List<String>> traduction;
@@ -66,5 +69,22 @@ public class Dictionary {
         }
         return ret;
     }
+    public void WriterTraduction() throws IOException{
+        FileWriter fw = new FileWriter("test.txt");
+        BufferedWriter bufw = new BufferedWriter(fw);
+        bufw.write(this.getName());
+        bufw.newLine();
+        for(String key : this.traduction.keySet()){
+            for(String i: this.getMultipleTranslations(key)){
+                bufw.write(key);
+                bufw.write("=>");
+                bufw.write(i);
+                bufw.newLine();
+            }
+        }
+        bufw.flush();
+        bufw.close();
+    }
+    
 
 }

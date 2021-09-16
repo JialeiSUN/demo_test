@@ -4,6 +4,7 @@
 package test3;
 
 
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,10 +14,11 @@ import static org.hamcrest.MatcherAssert.*;
 import static org.hamcrest.Matchers.equalTo;
 import java.util.ArrayList;
 import java.util.List;
+import java.io.File;
+import java.io.IOException;
 public class DictionaryTest {
 //Il faut competer
     private Dictionary dict;
-    private Dictionary dictTradu;
     @Before
     public void initialize(){
         dict = new Dictionary("Example");
@@ -24,8 +26,12 @@ public class DictionaryTest {
         tradu_chat.add("cat");
         tradu_chat.add("cat1");
         tradu_chat.add("cat2");
-        
         dict.addtraduction_key("chat", tradu_chat);
+        List<String> tradu_chien = new ArrayList<>();
+        tradu_chien.add("dog");
+        tradu_chien.add("dog1");
+        tradu_chien.add("dog2");
+        dict.addtraduction_key("chien", tradu_chien);
 
     }
     
@@ -45,5 +51,15 @@ public class DictionaryTest {
     }
     @Test public void testInverse(){
         assertThat(dict.getInverse("cat1"),equalTo("chat"));
+    }
+    @Test public void testWrite(){
+        File file = new File("test.txt");
+        try{
+            dict.WriterTraduction();
+        }catch(IOException e){
+            System.out.println(e);
+        }
+        assertNotNull("Pas de traduction",file.exists());
+
     }
 }
