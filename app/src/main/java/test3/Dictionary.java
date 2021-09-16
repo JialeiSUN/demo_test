@@ -56,17 +56,15 @@ public class Dictionary {
 
 }
     public String getInverse(String name){
+        String ret = null;
         for(String key : this.traduction.keySet()){
             for(String i: this.gettraduction(key)){
                 if(i == name){
-                    return key;
-                }
-                else{
-                    return null;
+                    ret = key;
                 }
             }
         }
-        return null;
+        return ret;
     }
 
 }

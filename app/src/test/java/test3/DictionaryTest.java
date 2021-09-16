@@ -29,7 +29,7 @@ public class DictionaryTest {
     }
     
     @Test public void Isempty(){
-        assertNotNull("Pas de traduction",dict.gettraduction("chien"));
+        assertNotNull("Pas de traduction",dict.gettraduction("chat"));
     }
     @Test public void testDictionaryName(){
         System.out.println(dict.getName());
