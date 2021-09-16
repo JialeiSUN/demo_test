@@ -16,16 +16,23 @@ import java.util.ArrayList;
 public class DictionaryTest {
 //Il faut competer
     private Dictionary dict;
+    private Dictionary dictTradu;
     @Before
     public void initialize(){
-        //dict = new Dictionary("Example");
-        dict = null;
+        dict = new Dictionary("Example");
+        dict.addtraduction("chat", "cat");
+        dict.addtraduction("chien", "dog");
+
     }
+    
     @Test public void Isempty(){
-        assertNotNull("dict not null",dict);
+        assertNotNull("Pas de traduction",dict.gettraduction("chien"));
     }
     @Test public void testDictionaryName(){
         System.out.println(dict.getName());
         assertThat(dict.getName(),equalTo("Example"));
+    }
+   @Test public void testTraduction(){
+        assertThat(dict.gettraduction("chat"),equalTo("cat"));
     }
 }
