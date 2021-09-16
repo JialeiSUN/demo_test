@@ -4,6 +4,7 @@
 package test3;
 
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -17,7 +18,11 @@ public class DictionaryTest {
     private Dictionary dict;
     @Before
     public void initialize(){
-        dict = new Dictionary("Example");
+        //dict = new Dictionary("Example");
+        dict = null;
+    }
+    @Test public void Isempty(){
+        assertNotNull("dict not null",dict);
     }
     @Test public void testDictionaryName(){
         System.out.println(dict.getName());
