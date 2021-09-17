@@ -1,4 +1,4 @@
-1 commit par question/etape 
-commit : 1-description de la tache 
-1-ajouter la fonction testDictionaryname
-2-ajouter la fonction isempty
+lien github:https://github.com/JialeiSUN/demo_test
+
+Questions ne sont pas réalizé:
+la partie Free wheeling et la partie Couverture
