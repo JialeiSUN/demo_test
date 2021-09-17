@@ -1,6 +1,7 @@
 package test3;
 import java.io.BufferedReader;
 import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -35,27 +36,38 @@ public class Dictionary implements IDictionary{
         
     }
     public void addNewTraduction(String fr, String en){
-        int count = 0;
+        int count = 1;
         int count_tradu = 0;
-        for(String key : this.traduction.keySet()){
-            if(key != fr){
-                count = 1;
-            }
-        }
-        if(count == 0){
-            for(String i: this.getMultipleTranslations(fr)){
-                if(i == en){
-                    count_tradu = 1;
+            for(String key : this.traduction.keySet()){
+
+                if(key.equals(fr)){
+                    count = 0;
                 }
-        }
-        if(count_tradu == 0){
-            this.getMultipleTranslations(fr).add(en);
-        }
-        else{
-            System.out.println("Mot exsite");
+            }
+            if(count == 1){
+                List<String> value = new ArrayList<>();
+                value.add(en);
+                this.addtraduction_key(fr, value);
+                //System.out.println(fr);
+                //System.out.println(value.get(0));
+            }
+            if(count == 0){
+                for(String i: this.getMultipleTranslations(fr)){
+                    if(i.equals(en)){
+                        count_tradu = 1;
+                    }
+            }
+            if(count_tradu == 0){
+                //System.out.println(en);
+                this.getMultipleTranslations(fr).add(en);
+            }
+            else{
+                System.out.println("Mot exsite");
+            }
+            
         }
         
-    }
+        
 
 }
     public String getInverse(String name){

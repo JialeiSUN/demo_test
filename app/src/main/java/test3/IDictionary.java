@@ -7,4 +7,5 @@ public interface IDictionary {
     public void addNewTraduction(String fr, String en);
     public String getInverse(String name);
     public void WriterTraduction() throws IOException;
+    public String getName();
 }

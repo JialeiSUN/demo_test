@@ -31,13 +31,14 @@ public class DictionaryTest {
         tradu_chat.add("cat");
         tradu_chat.add("cat1");
         tradu_chat.add("cat2");
+        
         dict.addtraduction_key("chat", tradu_chat);
+        dict.addNewTraduction("chat", "cat3");
         List<String> tradu_chien = new ArrayList<>();
         tradu_chien.add("dog");
         tradu_chien.add("dog1");
         tradu_chien.add("dog2");
         dict.addtraduction_key("chien", tradu_chien);
-
     }
     
     @Test public void Isempty(){
@@ -52,6 +53,7 @@ public class DictionaryTest {
     tradu_chat.add("cat");
     tradu_chat.add("cat1");
     tradu_chat.add("cat2");
+    tradu_chat.add("cat3");
         assertThat(dict.getMultipleTranslations("chat"),equalTo(tradu_chat));
     }
     @Test public void testInverse(){
@@ -69,6 +71,7 @@ public class DictionaryTest {
     }
     @Test public void testRead()throws IOException{
             FileWriter fw = new FileWriter("test2.txt");
+            File file = new File("test2.txt");
             BufferedWriter bufw = new BufferedWriter(fw);
             Reader rea = new FileReader("test.txt");
   
@@ -85,6 +88,18 @@ public class DictionaryTest {
         }
         bufw.flush();
         bufw.close();
-
+        assertNotNull("file not existe",file.exists());
+    }
+  @Test public void testloadTranslations()throws IOException{
+        Reader rea = new FileReader("test.txt");
+        IlineReader in = new LineReader(rea);
+        DictionaryParser dp = new DictionaryParser();
+        List<String> tradu_chat = new ArrayList<>();
+        tradu_chat.add("cat");
+    tradu_chat.add("cat1");
+    tradu_chat.add("cat2");
+    tradu_chat.add("cat3");
+        assertThat(dp.loadTranslations(in).getMultipleTranslations("chat"),equalTo(tradu_chat));
+        assertThat(dp.loadTranslations(in).getName(),equalTo("Example"));
     }
 }
