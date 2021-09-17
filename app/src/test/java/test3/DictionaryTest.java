@@ -91,7 +91,7 @@ public class DictionaryTest {
         assertNotNull("file not existe",file.exists());
     }
   @Test public void testloadTranslations()throws IOException{
-        Reader rea = new FileReader("test.txt");
+        Reader rea = new FileReader("load.txt");
         IlineReader in = new LineReader(rea);
         DictionaryParser dp = new DictionaryParser();
         List<String> tradu_chat = new ArrayList<>();

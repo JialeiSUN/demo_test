@@ -1,0 +1,8 @@
+Example
+chat=>cat
+chat=>cat1
+chat=>cat2
+chat=>cat3
+chien=>dog
+chien=>dog1
+chien=>dog2
